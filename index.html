@@ -9,7 +9,7 @@
 
 <body>
     <script>
-        const ws = new WebSocket('wss://devsocket.herokuapp.com/')
+        const ws = new WebSocket('ws://localhost:8080') // wss://devsocket.herokuapp.com/
 
         ws.addEventListener('open', (e) => {
             ws.send(JSON.stringify({ type: 'RECEIVE_JSON', data: { 1: 'Bonjour', 2: 'Salut' } }))

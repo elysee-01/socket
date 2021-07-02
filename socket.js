@@ -13,7 +13,6 @@ const wss = new WebSocket.Server({
 })
 
 wss.on('connection', (ws) => {
-    console.log('connecté')
     ws.on('message', (message) => {
         const m = JSON.parse(message)
         switch (m.type) {
@@ -21,6 +20,7 @@ wss.on('connection', (ws) => {
                 ws.send(JSON.stringify({ type: RETURN_JSON, data: m.data }))
                 break;
             default:
+                ws.send(JSON.stringify({ type: RETURN_JSON, data: m.data }))
                 break;
         }
     })
