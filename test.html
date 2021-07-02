@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const ws = new WebSocket('ws://localhost:8080')
+
+        ws.addEventListener('open', (e) => {
+            ws.send(JSON.stringify({ type: 'RECEIVE_JSON', data: { 1: 'Bonjour', 2: 'Salut' } }))
+        })
+
+        ws.addEventListener('message', (e) => {
+            const receicedMessage = JSON.parse(e.data)
+            console.log(receicedMessage)
+        })
+    </script>
+</body>
+
+</html>
